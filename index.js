@@ -4,9 +4,9 @@ const Intern = require('./lib/Intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-
 const generateTeam = require('./src/generateTeam');
 
+//Array to store the team members once added
 const theTeam = [];
 
 
@@ -244,6 +244,8 @@ function addIntern() {
     })
 }
 
+
+//Runs the main menu for questions.
 mainMenu();
 
 function writeToFile(file, data) {

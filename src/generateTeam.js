@@ -3,6 +3,7 @@ const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 
 
+//function to pass the Manager's data
 function createManagerCard(theTeam) {
 
     let teamCard = [];
@@ -14,6 +15,8 @@ function createManagerCard(theTeam) {
     return teamCard.join(``);
 }
 
+
+//Function with loop to pass the rest of employee's information
 function createEmployeeCards(theTeam) {
 
     let teamCard = [];
@@ -37,6 +40,8 @@ function createEmployeeCards(theTeam) {
     return teamCard.join(``);
 }
 
+
+//Creates base HTML
 function generateTeam(teamInfo) {
     return ` <!DOCTYPE html>
     <html lang="en">
@@ -81,6 +86,7 @@ function generateTeam(teamInfo) {
     `
 }
 
+//Creates Manager's card
 const cardManager = (managerInfo) => {
     return `<div class="card bg-primary" style="width: 18rem;">
     <div class="card-header">
@@ -95,6 +101,7 @@ const cardManager = (managerInfo) => {
   `
 }
 
+//Creates Intern's card
 const cardIntern = (internInfo) => {
     return `<section>
     <div class="card bg-success" style="width: 18rem;">
@@ -111,6 +118,7 @@ const cardIntern = (internInfo) => {
   `
 }
 
+//Creates Engineer's card
 const cardEngineer = (engineerInfo) => {
     return `<section>
     <div class="card bg-info" style="width: 18rem;">
