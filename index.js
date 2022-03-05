@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 
-const pageBuilder = require('./src/pageBuilder');
+const generateTeam = require('./src/generateTeam');
 
 const theTeam = [];
 
@@ -59,7 +59,7 @@ const mainMenu = () => {
             message: "Please enter Manager's office number.",
             name: 'managerOfficeNumber',
             validate: officeNumber => {
-                if (isNaN(officeNumber) || !officeNumber || officeNumber > 0) {
+                if (isNaN(officeNumber) || !officeNumber || officeNumber < 0) {
                     console.log("Please enter a a valid office number")
                     return false;
                 } else {
@@ -103,7 +103,7 @@ function buildTeam() {
                 addIntern();
                 break;
             default:
-                createTeam();
+                writeToFile('dist/index.html',generateTeam(theTeam));
         }
     })
 }
@@ -236,7 +236,7 @@ function addIntern() {
         const intern = new Intern(
             internInfo.internName,
             internInfo.internId,
-            internInfo.InternEmail,
+            internInfo.internEmail,
             internInfo.internSchool,
         );
         theTeam.push(intern);
@@ -245,3 +245,14 @@ function addIntern() {
 }
 
 mainMenu();
+
+function writeToFile(file, data) {
+    fs.writeFileSync(file, data, (err) => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log('File successfully created')
+        }
+    });
+    };
